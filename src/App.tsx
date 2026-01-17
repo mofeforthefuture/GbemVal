@@ -1,15 +1,20 @@
 import { useState } from 'react';
 import { HeroSection } from './components/HeroSection';
+import { SeatSection } from './components/SeatSection';
 import { PoemSection } from './components/PoemSection';
 import { FinalQuestion } from './components/FinalQuestion';
 import { FloatingHearts } from './components/FloatingHearts';
 import { CelebrationModal } from './components/CelebrationModal';
 
 export default function App() {
-  const [currentSection, setCurrentSection] = useState<'hero' | 'poem' | 'question'>('hero');
+  const [currentSection, setCurrentSection] = useState<'hero' | 'seat' | 'poem' | 'question'>('hero');
   const [showCelebration, setShowCelebration] = useState(false);
 
   const handleOpenLetter = () => {
+    setCurrentSection('seat');
+  };
+
+  const handleContinueToPoem = () => {
     setCurrentSection('poem');
   };
 
@@ -28,6 +33,11 @@ export default function App() {
       <HeroSection 
         isActive={currentSection === 'hero'}
         onOpenLetter={handleOpenLetter}
+      />
+
+      <SeatSection 
+        isActive={currentSection === 'seat'}
+        onContinue={handleContinueToPoem}
       />
 
       <PoemSection 

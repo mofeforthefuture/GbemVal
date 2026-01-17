@@ -1,11 +1,11 @@
 import { motion } from 'motion/react';
 
-interface HeroSectionProps {
+interface SeatSectionProps {
   isActive: boolean;
-  onOpenLetter: () => void;
+  onContinue: () => void;
 }
 
-export function HeroSection({ isActive, onOpenLetter }: HeroSectionProps) {
+export function SeatSection({ isActive, onContinue }: SeatSectionProps) {
   if (!isActive) return null;
 
   return (
@@ -32,19 +32,19 @@ export function HeroSection({ isActive, onOpenLetter }: HeroSectionProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
         >
-          <motion.h1
-            className="text-5xl md:text-7xl mb-16 text-rose-900/80 tracking-wide" 
-            style={{ fontFamily: '"Dancing Script", cursive' }}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
+          <motion.p
+            className="text-2xl md:text-3xl text-rose-800/70 mb-16"
+            style={{ fontFamily: '"Cormorant Garamond", serif' }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
           >
-            Knock knock......
-          </motion.h1>
+            is this seat taken?
+          </motion.p>
         </motion.div>
 
         <motion.button
-          onClick={onOpenLetter}
+          onClick={onContinue}
           className="group relative px-8 py-6 rounded-full text-base md:text-lg overflow-hidden"
           style={{
             background: 'linear-gradient(135deg, #ffd1dc 0%, #ffb6c8 100%)',
@@ -53,7 +53,7 @@ export function HeroSection({ isActive, onOpenLetter }: HeroSectionProps) {
           }}
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 1.3 }}
+          transition={{ duration: 0.6, delay: 1.0 }}
           whileHover={{ 
             scale: 1.05,
             boxShadow: '0 12px 40px rgba(255, 182, 200, 0.5)',
@@ -78,15 +78,11 @@ export function HeroSection({ isActive, onOpenLetter }: HeroSectionProps) {
           />
           
           <span className="relative z-10 text-rose-900 leading-relaxed block">
- Next
+            My iridescent goddess<br />
+            <span className="text-sm md:text-base opacity-90">You illuminate these words on my tongue</span>
           </span>
         </motion.button>
       </div>
-
-      {/* Font preload */}
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-      <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
     </motion.div>
   );
 }

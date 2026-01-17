@@ -15,7 +15,7 @@ export function PoemSection({ isActive, onComplete }: PoemSectionProps) {
       // Show button after poem animations complete
       const timer = setTimeout(() => {
         setShowButton(true);
-      }, 6000);
+      }, 7000);
       return () => clearTimeout(timer);
     }
   }, [isActive]);
@@ -38,8 +38,8 @@ export function PoemSection({ isActive, onComplete }: PoemSectionProps) {
     [
       "I could write a thousand lines",
       "But I do hope I did this right",
-      "We both know one day of celebrating love will never suffice",
-      "But for the sake of tradition, …",
+      "We both know one day celebrating love will never suffice",
+      "But for the sake of tradition, ....."
     ],
   ];
 
@@ -82,6 +82,16 @@ export function PoemSection({ isActive, onComplete }: PoemSectionProps) {
           />
 
           <div className="relative">
+            {/* Dearest Iria header */}
+            <motion.h2
+              className="text-3xl md:text-4xl text-rose-900/90 mb-8 text-center"
+              style={{ fontFamily: '"Dancing Script", cursive' }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              Dearest Iria...
+            </motion.h2>
             {stanzas.map((stanza, stanzaIndex) => (
               <motion.div
                 key={stanzaIndex}
@@ -89,7 +99,7 @@ export function PoemSection({ isActive, onComplete }: PoemSectionProps) {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ 
                   duration: 0.8, 
-                  delay: stanzaIndex * 1.5 + 0.5,
+                  delay: stanzaIndex * 1.5 + 1.0,
                 }}
                 className="mb-8 last:mb-0"
               >
@@ -102,7 +112,7 @@ export function PoemSection({ isActive, onComplete }: PoemSectionProps) {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ 
                       duration: 0.6, 
-                      delay: stanzaIndex * 1.5 + 0.5 + lineIndex * 0.2,
+                      delay: stanzaIndex * 1.5 + 1.0 + lineIndex * 0.2,
                     }}
                   >
                     {line}
@@ -142,7 +152,7 @@ export function PoemSection({ isActive, onComplete }: PoemSectionProps) {
               style={{
                 background: 'linear-gradient(135deg, #ffd1dc 0%, #ffb6c8 100%)',
                 boxShadow: '0 8px 30px rgba(255, 182, 200, 0.3)',
-                fontFamily: '"Inter", sans-serif',
+                fontFamily: '"Dancing Script", cursive',
                 fontWeight: 400,
               }}
               onMouseEnter={(e) => {
@@ -154,7 +164,7 @@ export function PoemSection({ isActive, onComplete }: PoemSectionProps) {
                 e.currentTarget.style.transform = 'scale(1)';
               }}
             >
-              <span className="text-rose-900">Continue</span>
+              <span className="text-rose-900">next</span>
             </button>
           </motion.div>
         )}
